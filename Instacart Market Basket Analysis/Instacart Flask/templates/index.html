@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#fffcf5;">
+<head>
+  <img src="https://softwareengineeringdaily.com/wp-content/uploads/2017/06/instacart-logo-wordmark-transparent.png" style="width:304px;height:68px;">
+	<title>Instacart Market Analysis</title>
+</head>
+
+<p><font size="10" color="#43B02A" face="chalkboard">Basket Analysis </p>
+<p><font size="4" color="#43B02A" face="chalkboard"></p>
+<p><font size="4" color="black" face="chalkboard">Please enter in a user id and a product id. </p>
+<p><font size="4" color="black" face="chalkboard">We'll tell you whether it will be reordered or not.</p>
+<form action="/predict_reorder/" method="post">
+	<font size="4.5" color="black" face="arial">
+User_id:<br>
+  <input type="text" name="user_id">
+<br>
+Product_id:<br>
+  <input type="text" name="product_id">
+<br>
+
+<button type="submit"> <font size="3" color="black" face="chalkboard">
+	Reorder or not?
+</button>
+</form>
+
+{% if message %}
+<p><font size="5" color="#145A32" face="chalkboard">{{message}}</p>
+{% endif %}
+
+</body>
+</html>

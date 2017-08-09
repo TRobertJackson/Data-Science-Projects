@@ -24,10 +24,10 @@ def predict_reorder(user_id, product_id):
 
     user_id = int(user_id)
     product_id = int(product_id)
-    
+
     df = pd.merge(user_product_info[(user_product_info.user_id == user_id) & (user_product_info.product_id == product_id)], user_info, on = 'user_id', how = 'left')
     if df.empty:
-        return ("This user hasn't bought this product before, we're not sure if he/she will buy it.")
+        return ("User {0} hasn't bought product {1} before, we're not sure if he/she will buy it.".format(user_id, product_id))
     df = pd.merge(df, product_info, on = 'product_id', how = 'left')
     df = pd.merge(df, aisle_info, on = 'aisle_id', how = 'left', suffixes=('', '_y'))
     df.drop('department_id_y', axis = 1, inplace=True)
@@ -38,6 +38,6 @@ def predict_reorder(user_id, product_id):
     X = X.drop(['eval_set', 'user_id', 'product_id'], axis = 1)
     y = pred_model.predict_proba(X)
     if (y[:,1:] > 0.197):
-        return("Yes, this user will buy this product in his/her next order.")
+        return("Yes, user {0} will buy product {1} in his/her next order.".format(user_id, product_id))
     else:
-        return("No, this user won't buy this product in his/her next order.")
+        return("No, user {0} won't buy product {1} in his/her next order.".format(user_id, product_id))

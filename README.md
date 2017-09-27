@@ -1,2 +1,2 @@
 # Data-Science-Projects
-This repo will include five projects in the Metis Data Science Bootcamp
+This repo includes the five projects I completed in Metis Data Science Bootcamp in the summer of 2017.

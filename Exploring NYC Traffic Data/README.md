@@ -1,5 +1,7 @@
 This folder contains Jupyter notebooks and presentations for my first project at Metis.
 
+This project was completed in collaboration with Ibrahim Gabr: https://github.com/igabr
+
 ## Problem Statement
 The fictional organization WomenTechWomenYes (WTWY) asked helps from us to strategize for their volunteers to send out the tickets to their fundraising gala. We based our analysis based on three factors: the MTA data, the tech company map and the demographic stats.
 

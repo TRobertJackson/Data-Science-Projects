@@ -13,6 +13,8 @@ def Laliga_click(driver):
     Laliga.click()
     time.sleep(5);
 
+    return
+
 def season_click(driver, season_num):
     '''
     function to select season
@@ -24,26 +26,37 @@ def season_click(driver, season_num):
         pass
     time.sleep(5)
 
+    return
+
 def Season_Point_Results(driver, season_num):
     '''
     function to collect the end-of-season points for 20 teams in Laliga
     '''
-    results = pd.DataFrame(columns = ['season','team', 'points'])
     print('season: 201%d - 201%d' %((season_num - 1), (season_num - 0)))
 
-    season_click(driver, season_num) #choose the season
+    #select the season
+    season_click(driver, season_num)
     time.sleep(5);
 
+    #find the end-of-season point table
     table = driver.find_element_by_css_selector("*[class^='ws-panel stat-table tournament-standings-table']")
 
+    #initialize end-of-season point dataframe
+    results = pd.DataFrame(columns = ['season','team', 'points'])
+
+    #append each row to point dataframe
     allrows = table.find_elements_by_tag_name('tr')
     for row in allrows:
         cell = row.find_elements_by_tag_name('td')
         if len(cell) >9:
             results = results.append(pd.DataFrame([['201%d - 201%d' %((season_num - 1), (season_num - 0)), cell[1].text, cell[9].text]], columns = ['season','team', 'points']))
+
     return results
 
 def Team_Statistics_click(driver):
+    '''
+    function to select team statistics tab on the website
+    '''
     Team_Statistics = driver.find_element_by_xpath('//*[@id="sub-navigation"]/ul/li[3]/a')
     while True:
         try:
@@ -53,7 +66,12 @@ def Team_Statistics_click(driver):
             time.sleep(2);
     time.sleep(5);
 
+    return
+
 def Summary_in_Team_Statistics_click(driver):
+    '''
+    function to select the summary stats tab
+    '''
     Summary = driver.find_element_by_xpath('//*[@id="stage-team-stats-options"]/li[1]/a')
     try:
         Summary.click()
@@ -61,7 +79,12 @@ def Summary_in_Team_Statistics_click(driver):
         time.sleep(2);
     time.sleep(5);
 
+    return
+
 def Defensive_in_Team_Statistics_click(driver):
+    '''
+    function to select the defensive stats tab
+    '''
     Defensive = driver.find_element_by_xpath('//*[@id="stage-team-stats-options"]/li[2]/a')
     try:
         Defensive.click()
@@ -69,7 +92,12 @@ def Defensive_in_Team_Statistics_click(driver):
         time.sleep(1);
     time.sleep(5);
 
+    return
+
 def Offensive_in_Team_Statistics_click(driver):
+    '''
+    function to select the offensive stats tab
+    '''
     Offensive = driver.find_element_by_xpath('//*[@id="stage-team-stats-options"]/li[3]/a')
     while True:
         try:
@@ -79,17 +107,27 @@ def Offensive_in_Team_Statistics_click(driver):
             time.sleep(1);
     time.sleep(5);
 
+    return
+
 
 def Season_Team_Statistics(driver, season_num, stat_option):
-    season_click(driver, season_num)  #choose the ith latest season
+    '''
+    function to prepare the team stats dataframes
+    '''
+    #select the season
+    season_click(driver, season_num)
     time.sleep(5);
     print(season_num)
+
+    #select the team statistic tab
     Team_Statistics_click(driver)  #select Team Statistics Tab
     time.sleep(5);
 
+    #select the summary(or defensive, or offensive) stats tab
+    #find the stats table
     if stat_option == 'summary':
         columns = ['season', 'R', 'team','shots_pg', 'discipline_yellow', 'discipline_red', 'possession', 'pass_success', 'aerials_won', 'rating']
-        Summary_in_Team_Statistics_click() #select summary statistics
+        Summary_in_Team_Statistics_click()
         time.sleep(5);
         table = driver.find_element_by_xpath('//*[@id="statistics-team-table-summary"]')
 
@@ -105,10 +143,11 @@ def Season_Team_Statistics(driver, season_num, stat_option):
         time.sleep(5);
         table = driver.find_element_by_xpath('//*[@id="statistics-team-table-offensive"]')
 
+    #initialize team stats dataframe
     team_statistic = pd.DataFrame(columns = columns)
-    print(columns)
-    allrows = table.find_elements_by_tag_name('tr')
 
+    #add each row to the team stats dataframe
+    allrows = table.find_elements_by_tag_name('tr')
     for row in allrows:
         cell = row.find_elements_by_tag_name('td')
         data = ['201%d - 201%d' %((season_num - 1), (season_num - 0))]

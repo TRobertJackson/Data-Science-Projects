@@ -17,10 +17,17 @@ from sklearn import preprocessing
 from sklearn.preprocessing import MinMaxScaler
 
 def pseudo_cross_val_elasticnet_score(df, num_fold, alpha, l1_ratio):
-    num_row_in_fold = len(df.index)//num_fold
+    '''
+    function to perform linear regression with elasticnet regularization and cross validation
+    '''
+    #shuffle the dataframe and separate it into n folds
     df = df.sample(frac=1, random_state = 100).reset_index(drop = True) #shuffle sumple
+    num_row_in_fold = len(df.index)//num_fold
+
+    #mannulay do cross validation for n folds
     scores = []
-    for i in range(num_fold): #split the data into the num_fold folds, do cross validations.
+    for i in range(num_fold):
+        #the ith fold is test data, the remaining is training data
         test_start = (num_row_in_fold * i)
         test_end = (num_row_in_fold * (i + 1)) + 1
 
@@ -37,36 +44,47 @@ def pseudo_cross_val_elasticnet_score(df, num_fold, alpha, l1_ratio):
         X_train_scaled = scaler.transform(X_train)
         X_test_scaled = scaler.transform(X_test)
 
+        #perform linear regression with elasticnet regularization
         model= ElasticNet(alpha = alpha, l1_ratio = l1_ratio, max_iter=10000)
         model.fit(X_train_scaled, y_train)
         scores.append(model.score(X_test_scaled, y_test))
+
+    #return the mean score as the cross validation score
     return np.median(scores)
 
 def elasticnet_optimize_parameters(df, alphas, l1_ratios):
-    #optimize the alpha and l1_ratio for the elasticnet regularization
+    '''
+    function to optimize the alpha and l1_ratio for the elasticnet regularization
+    '''
     max_score = 0
     optimized_alpha = 0
     optimized_l1_ratio = 0
+
+    #perform linear regression with elasticnet regularization and cross validation
+    #for each combination of alpha and l1_ratio
+    #get the maximum score and the optimized set of alpha and l1_ratio
     for alpha in alphas:
-        #print(alpha)
         for l1_ratio in l1_ratios:
-            #print(l1_ratio)
             score = pseudo_cross_val_elasticnet_score(df, 5, alpha, l1_ratio)
-            #print(score)
             if score > max_score:
                 max_score = score
                 optimized_alpha = alpha
                 optimized_l1_ratio = l1_ratio
     return [max_score, optimized_alpha, optimized_l1_ratio]
 
-#The optimized l1_ratio is 1, indicating the lasso regularization is more appropriate
-#I'll use lasso regularization for my analysis
-
 def pseudo_cross_val_lasso_score(df, num_fold, alpha):
-    num_row_in_fold = len(df.index)//num_fold
+    '''
+    function to perform linear regression with lasso regularization and cross validation
+    '''
+    #shuffle the dataframe and separate it into n folds
     df = df.sample(frac=1, random_state = 100).reset_index(drop = True) #shuffle sumple
+    num_row_in_fold = len(df.index)//num_fold
+
     scores = []
-    for i in range(num_fold): #split the data into the num_fold folds, do cross validations.
+    #mannulay do cross validation for n folds
+    for i in range(num_fold):
+
+        #the ith fold is test data, the remaining is training data
         test_start = (num_row_in_fold * i)
         test_end = (num_row_in_fold * (i + 1)) + 1
 
@@ -83,19 +101,25 @@ def pseudo_cross_val_lasso_score(df, num_fold, alpha):
         X_train_scaled = scaler.transform(X_train)
         X_test_scaled = scaler.transform(X_test)
 
+       #perform linear regression with elasticnet regularization
         model= Lasso(alpha = alpha, max_iter=10000)
         model.fit(X_train_scaled, y_train)
         scores.append(model.score(X_test_scaled, y_test))
+
+    #return the mean score as the cross validation score
     return np.median(scores)
 
 def lasso_optimize_alpha(df, alphas):
-    #optimize the alpha and l1_ratio for the elasticnet regularization
+    '''
+    function to optimize the alpha and l1_ratio for the lasso regularization
+    '''
+
+    #perform linear regression with elasticnet regularization and cross validation for each alpha
+    #get the maximum score and the optimized alpha
     max_score = 0
     optimized_alpha = 0
     for alpha in alphas:
-        #print(alpha)
         score = pseudo_cross_val_lasso_score(df, 5, alpha)
-        #print(score)
         if score > max_score:
             max_score = score
             optimized_alpha = alpha

@@ -1,3 +1,5 @@
+# Optimizing Street Team Effectiveness - WomenTechWomenYes
+
 This folder contains Jupyter notebooks and presentations for my first project at Metis.
 
 This project was completed in collaboration with Ibrahim Gabr: https://github.com/igabr
@@ -15,7 +17,7 @@ Furthermore, we find out the nearby large tech companies around the top stations
 Last, we combine with the census data to give further insights into to diversity of people the volunteers should expect around the popular stations.
 
 
-## Data Wrangling and Analysis 
+## Data
 1. MTA Data  
 The gala will be held on May 30th. We wish to give WTWY 2 weeks in order to implement our findings. In order to use the latest results, we used MTA data that relates to 3 weeks prior to the 2 week implementation process.  
 We downloaded the turnstile traffic data files for 170429, 170506 and 170513 from the [MTA website](http://web.mta.info/developers/turnstile.html), combined them into one dataframe, and clean up the headers. We computed the entries and exits for each turnstile in all the time ranges, which allows us to figure our the popular stations and time ranges. 

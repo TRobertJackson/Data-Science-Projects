@@ -1,20 +1,20 @@
-# Optimizing Street Team Effectiveness - WomenTechWomenYes
+# Unshakable Strategies for Maintaining Visibility and Stake in the NYC Tech Scene - WTWY
 
 This folder contains Jupyter notebooks and presentations for my first project at Metis.
 
 This project was completed in collaboration with Ibrahim Gabr: https://github.com/igabr
 
 ## Problem Statement
-The fictional organization WomenTechWomenYes (WTWY) asked helps from us to strategize for their volunteers to send out the tickets to their fundraising gala. We based our analysis based on three factors: the MTA data, the tech company map and the demographic stats.
+The fictional organization WomenTechWomenYes (WTWY) asked for helps from us to strategize for their volunteers to send out the tickets to their fundraising gala. Our strategies were based on three factors: the MTA data, the tech company map and the demographic stats.
 
 
-First, we give insights into which stations and days of the week have the most foot-traffic to optimize voluteer placement for outreach. Our analysis even highlight the specific turnstiles/control areas and peak hours within the top 5 popular stations.
+First, we looked into which stations and days of the week have the most foot-traffic to optimize voluteer placement for outreach. Our analysis even highlight the specific turnstiles/control areas and peak hours within the top 5 popular stations.
 
 
-Furthermore, we find out the nearby large tech companies around the top stations to make suggestions on which entries/exits the volunteers should go.
+Furthermore, we found out the nearby large tech companies around the top stations to make suggestions on which entries/exits the volunteers should go.
 
 
-Last, we combine with the census data to give further insights into to diversity of people the volunteers should expect around the popular stations.
+Last, we combined with the census data to give further insights into to diversity of people the volunteers should expect around the popular stations.
 
 
 ## Data
@@ -29,3 +29,5 @@ We obtained the headcount and locations for the largest tech companies in NYC fr
 3. Demographic Stats  
 The demographic stats around the top popular stations were obtained from the [NYC Census Fact Find website](http://maps.nyc.gov/census/).
 
+## Tools
+Pandas, Numpy, Matplotlib, Seaborn

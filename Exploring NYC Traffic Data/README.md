@@ -17,7 +17,7 @@ Furthermore, we found out the nearby large tech companies around the top station
 Last, we combined with the census data to give further insights into to diversity of people the volunteers should expect around the popular stations.
 
 
-## Data
+## Data Source
 1. MTA Data  
 The gala will be held on May 30th. We wish to give WTWY 2 weeks in order to implement our findings. In order to use the latest results, we used MTA data that relates to 3 weeks prior to the 2 week implementation process.  
 We downloaded the turnstile traffic data files for 3 weeks from the [MTA website](http://web.mta.info/developers/turnstile.html), combined them into one dataframe, and clean up the headers. We computed the entries and exits for each turnstile in all the time ranges, which allows us to figure our the popular stations and time ranges. 
@@ -28,6 +28,9 @@ We obtained the headcount and locations for the largest tech companies in NYC fr
 
 3. Demographic Stats  
 The demographic stats around the top popular stations were obtained from the [NYC Census Fact Find website](http://maps.nyc.gov/census/).
+
+## Data Analysis and Findings
+The details of data analysis and findings can be found in the Jupyter notebook [Benson Project](https://github.com/tongwu21/Data-Science-Projects/blob/master/Exploring%20NYC%20Traffic%20Data/Benson%20Project.ipynb)
 
 ## Tools
 Pandas, Numpy, Matplotlib, Seaborn

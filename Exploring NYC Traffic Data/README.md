@@ -20,7 +20,7 @@ Last, we combined with the census data to give further insights into to diversit
 ## Data
 1. MTA Data  
 The gala will be held on May 30th. We wish to give WTWY 2 weeks in order to implement our findings. In order to use the latest results, we used MTA data that relates to 3 weeks prior to the 2 week implementation process.  
-We downloaded the turnstile traffic data files for 170429, 170506 and 170513 from the [MTA website](http://web.mta.info/developers/turnstile.html), combined them into one dataframe, and clean up the headers. We computed the entries and exits for each turnstile in all the time ranges, which allows us to figure our the popular stations and time ranges. 
+We downloaded the turnstile traffic data files for 3 weeks from the [MTA website](http://web.mta.info/developers/turnstile.html), combined them into one dataframe, and clean up the headers. We computed the entries and exits for each turnstile in all the time ranges, which allows us to figure our the popular stations and time ranges. 
 
 
 2. Top Largest Tech Company Locations  

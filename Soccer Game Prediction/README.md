@@ -14,7 +14,7 @@ The end-of-season points and team statistics for 20 teams in 7 seasons were web 
 Lasso regression with cross validation was performed to predict end-of-season points from team statistics.
 
 ## Findings
-The final model has a R2 score of 0.765. The most important team stats are: shots on target per game, tackles per game and offsides per game.
+The final model has a R2 score of 0.765. The most important team stats to predict scores are: shots on target per game, tackles per game and offsides per game.
 Details can be found in the Jupyter notebook. 
 
 ## Notebooks and Scripts

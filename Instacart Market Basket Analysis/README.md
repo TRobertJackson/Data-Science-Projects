@@ -24,3 +24,12 @@ A baseline model was build by predicting all the products that a customer purcha
 Xgboost model was developed based on the features. After parameter optimization, it improved the F1 score to 0.376.
 
 
+## Notebooks and Scripts
+- [Instacart Market Basket Analysis](https://github.com/tongwu21/Data-Science-Projects/blob/master/Instacart%20Market%20Basket%20Analysis/Instacart%20Market%20Basket%20Analysis.ipynb) - This notebook contains the code that I used to explore data and play with models. 
+
+- [Instart final.key](https://github.com/tongwu21/Data-Science-Projects/blob/master/Instacart%20Market%20Basket%20Analysis/Instacart_final.key) - the final slides for this project.
+
+## Tools
+Xgboost, Sklearn, Pandas, Numpy
+
+

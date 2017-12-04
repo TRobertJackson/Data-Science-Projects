@@ -1,6 +1,6 @@
 # Clustering Investors on Twitter
 ## Objective
-Recently I started to develop an interest in investments. I decide to follow some famous investors on twitter. But who should I follow and how can I quickly get to know what they are talking about? I googled "famous investors on twitter" and got several lists. In total I found 145 famous investors on twitter. Each of them has thousands of tweets. I'm not going to read all of their tweets. It's going to kill me. As a data scientist, I decide to quickly know what they are talking about using machine learning algorithms. 
+Recently I started to develop an interest in investments. I decide to follow some famous investors on twitter. But who should I follow and how can I quickly know what they are talking about? I googled "famous investors on twitter" and got several lists. In total I found 145 famous investors on twitter. Each of them has thousands of tweets. I'm not going to read all of their tweets. It's going to kill me. As a data scientist, I decide to quickly know what they are talking about using machine learning algorithms. 
 
 The objective of this project was using LDA(latent dirichlet allocation) and K-means clustering algorithms to find out the major topics for the 143 famous investors on twitter and group them based on their topics.
 
